@@ -4,6 +4,12 @@ const CustomHeader = axios.create({
     baseURL: "https://api.github.com/"
 });
 
+export async function getUserProfile(userName: string) {
+    return await CustomHeader.get(`/users/${userName}`)
+        .then(response => response.data)
+        .catch(err => { throw err });
+}
+
 export async function getUserRepoProfile (userName: string, page = 1) {
     return await CustomHeader.get(`/users/${userName}/repos?per_page=${10}&page=${page}`)
         .then(response => response.data)

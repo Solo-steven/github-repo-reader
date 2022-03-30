@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import { useParams } from "react-router-dom";
 import * as Style from "./style";
 import { MdStarBorder, MdOutlineVisibility } from "react-icons/md";
 
@@ -13,11 +14,12 @@ interface RepoCardProps {
 }
 
 export const RepoCard: FC<RepoCardProps>  = (props) => {
+    const { username } = useParams<{username: string}>()
     return (
         <Style.Root>
             <Style.Container>
                 <Style.Header>
-                    <Style.Title>
+                    <Style.Title to={`/user/${username}/repos/${props.name}`}>
                         {props.name}
                     </Style.Title>
                     <Style.Visibility>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Root = styled.div`
     display: flex;
@@ -13,10 +14,14 @@ export const Container = styled.div`
     flex: 1;
 `;
 
-export const Title = styled.div`
+export const Title = styled(Link)`
+    display: block;
+    text-decoration: none;
+    border: none ;
     color: #539bf5;
     font-size: 20px;
     font-weight: 600;
+    cursor: pointer
 `;
 
 export const Visibility = styled.div`
