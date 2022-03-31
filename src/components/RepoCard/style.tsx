@@ -14,6 +14,12 @@ export const Container = styled.div`
     flex: 1;
 `;
 
+export const Header = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+`;
+
 export const Title = styled(Link)`
     display: block;
     text-decoration: none;
@@ -21,7 +27,10 @@ export const Title = styled(Link)`
     color: #539bf5;
     font-size: 20px;
     font-weight: 600;
-    cursor: pointer
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 export const Visibility = styled.div`
@@ -36,11 +45,6 @@ export const Visibility = styled.div`
     margin-left: 5px;
 `;
 
-export const Header = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 4px;
-`;
 
 export const Description = styled.div`
     color: #768390;

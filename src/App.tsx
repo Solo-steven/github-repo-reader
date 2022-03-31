@@ -16,12 +16,20 @@ const App: FC = () => {
                     <Route 
                         path="/user/:username/repos" 
                         element={
-                            <Profiler id="repos" onRender={() => {}}>
+                            <Profiler id="repos-profiles" onRender={() => {}}>
                                  <UserRepos/>
                             </Profiler>
                         }
-                    />
-                    <Route path="/user/:username/repos/:repo" element={<SingleRepo/>}/>
+                    >
+                        <Route 
+                            path=":repo" 
+                            element={
+                                <Profiler id="single-repo" onRender={() => {}}>
+                                    <SingleRepo/>
+                                </Profiler>
+                            }
+                        />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>

@@ -11,6 +11,7 @@ interface RepoCardProps {
     tags: Array<string>;
     starCount: number;
     watchCount: number;
+    // updateAt: string;
 }
 
 export const RepoCard: FC<RepoCardProps>  = (props) => {

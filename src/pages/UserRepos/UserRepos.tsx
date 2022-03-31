@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useCallback, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import * as Style from "./style";
 import { RepoCard } from "components/RepoCard";
 import { ProfileCard } from "components/ProfileCard";
@@ -100,6 +100,7 @@ const UserRepos: FC = () => {
                     }
                 </Style.ReposContainer>
             </Style.Container>
+            <Outlet/>
         </Style.Root>
     );
 };
