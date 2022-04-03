@@ -37,7 +37,7 @@ export const Title = styled.a`
     text-decoration: none;
     border: none;
     cursor: pointer;
-    color: #539bf5;
+    color: ${props => props.theme.palette.text.primary};
     font-size: 20px;
     &:hover {
         text-decoration: underline;
@@ -53,7 +53,7 @@ export const Tag = styled.div`
     font-size: 12px;
     padding: 2px 7px;
     margin: 4px 1.5px 4px 0px;
-    color: #539bf5;
+    color: ${props => props.theme.palette.text.primary};
     background-color: rgba(65,132,228,0.15);
     border-radius: 2em;
 
@@ -64,7 +64,7 @@ export const Tag = styled.div`
 `;
 
 export const Description = styled.div`
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     margin-bottom:  8px;
 `;
 
@@ -77,12 +77,12 @@ export const Footer = styled.div`
 `;
 
 export const UpdateAt = styled.p`
-     color: #768390;
+     color: ${props => props.theme.palette.text.secondary};
      margin-right: 24px;
 `;
 
 export const Language = styled.p`
-     color: #768390;
+     color: ${props => props.theme.palette.text.secondary};
 `;
 
 export const StarContainer = styled.div`

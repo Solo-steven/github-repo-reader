@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Root = styled.div`
     width: 100vw;
-    height: 100vh;
-    background-color:#22272e;
+    height: ${props => `calc(100vh - ${props.theme.palette.navbar.height})`};
+    background: ${props => props.theme.palette.bg};
 `;
 
 export const Container = styled.div`
@@ -30,7 +30,7 @@ export const ReposContainer = styled.div`
 export const LoadingIcon = styled.div`
     max-width: 800px;
     padding: 20px 40px;
-    color: #FFFFFF;
+    color: ${props => props.theme.palette.white};
     display: flex;
     justify-content: center;
     align-items: center;

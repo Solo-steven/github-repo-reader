@@ -11,14 +11,14 @@ export const Name = styled.div`
     font-style: normal;
     font-weight: 300;
     line-height: 24px;
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     padding: 16px 0px;
 `;
 
 export const FollowText = styled.div`
     display: inline-block;
     font-size: 14px;
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     margin-right: 12px;
 `;
 
@@ -30,9 +30,9 @@ export const FollowNumber = styled.div`
 `;
 
 export const BioText = styled.div`
-    border-top: 1px solid  #373e47;
+    border-top: 1px solid  ${props => props.theme.palette.border};
     padding-top: 1rem;
     margin-top: 1rem ;
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     font-size: 14px;
 `;

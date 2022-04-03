@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export const Root = styled.div`
     display: flex;
     justify-content: center;
-    color: #FFFFFF;
+    color: ${props => props.theme.palette.white};
     max-width: 800px;
-    border-bottom: 1px solid #444c56;
+    border-bottom: 1px solid ${props => props.theme.palette.border};
     padding: 28px 6px;
 `;
 
@@ -24,7 +24,7 @@ export const Title = styled(Link)`
     display: block;
     text-decoration: none;
     border: none ;
-    color: #539bf5;
+    color: ${props => props.theme.palette.text.primary};
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
@@ -34,7 +34,7 @@ export const Title = styled(Link)`
 `;
 
 export const Visibility = styled.div`
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     border: 1px solid #444c56;
     padding: 2px 7px;
     font-size: 12px;
@@ -47,7 +47,7 @@ export const Visibility = styled.div`
 
 
 export const Description = styled.div`
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     margin-bottom:  8px;
 `;
 
@@ -61,18 +61,18 @@ export const Tag = styled.div`
     font-size: 12px;
     padding: 2px 7px;
     margin: 4px 1.5px 4px 0px;
-    color: #539bf5;
+    color: ${props => props.theme.palette.text.primary};
     background-color: rgba(65,132,228,0.15);
     border-radius: 2em;
 
     &:hover {
-        background-color: #316dca ;
+        background-color: #316dca;
         color: #cdd9e5;
     }
 `;
 
 export const Footer = styled.div`
-    color: #768390;
+    color: ${props => props.theme.palette.text.secondary};
     font-size: 12px;
     margin-top: 8px;
 `;
