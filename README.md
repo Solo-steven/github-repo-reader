@@ -2,6 +2,10 @@
 
 react app create by CRA package.(still using react 17.0.2)
 
+## Deploy Url
+
+http://45.76.52.184:3000/
+
 ## Setup Project
 
 dev env: MacOS 10.15.7
