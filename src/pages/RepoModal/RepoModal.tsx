@@ -68,7 +68,11 @@ const SingleRepo: FC = () => {
                     </Style.StarContainer>
                 </Style.Header>
                 <Style.Description>
-                    {!!repoInfo?.description ?  repoInfo?.description : "No Description"}
+                    { repoInfo.description ? ( 
+                        repoInfo.description.length > 80 ? repoInfo.description.slice(0,80) + "..." : repoInfo.description
+                    ) : (
+                        "No description"
+                    )}
                 </Style.Description>
                 <Style.TagsContainer>
                     {repoInfo?.tags.map(tag => (

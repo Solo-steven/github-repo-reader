@@ -4,12 +4,22 @@ react app create by CRA package.(still using react 17.0.2)
 
 ## Setup Project
 
-- dev env: MacOS 10.15.7
+dev env: MacOS 10.15.7
+
+- Method 1: start with yarn
 
 ```
 yarn install
 yarn start
 ## run dev server on localhost:3000
+```
+
+- Method 2: start with docker-compose
+
+```
+docker-compose up --build -d
+docker-compose down
+## make sure port 3000 is free to use, or change docker-compose file
 ```
 
 ## Folder Structure
@@ -34,10 +44,11 @@ you can use link to directly goto 2 or 3, and if user or user's repo does not ex
 
 ## Scrolling Optimation Feature
 
-Using React-window package and React.memo optimize scrolling.
+Using React-window package , React.memo and IntersectionObserver to optimize scrolling.
 
 1. react-window can reducing memory usage. only render components which are exist in view.
 2. React.memo can memrize component's last props, when parent re-render, it can compare last props and current new props to decide if needs to re-render itself.
+3. IntersectionObserver: DOM API using async way to listen element enter and leave the view. Using fewer computer resources than busy waiting methods like onScroll event listener.
 
 the original way to implement business logic is rendering when an API call receives,
 so it will render 10 components whenever new data come in.
