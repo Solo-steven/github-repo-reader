@@ -1,7 +1,8 @@
-import { FC, memo } from "react";
+import { FC, memo, CSSProperties } from "react";
 import { useParams } from "react-router-dom";
 import * as Style from "./style";
 import { MdStarBorder, MdOutlineVisibility } from "react-icons/md";
+import { timeString } from "utils";
 
 interface RepoCardProps {
     name: string;
@@ -11,13 +12,13 @@ interface RepoCardProps {
     tags: Array<string>;
     starCount: number;
     watchCount: number;
-    // updateAt: string;
+    updateAt: string;
 }
 
 export const RepoCard: FC<RepoCardProps>  = (props) => {
     const { username } = useParams<{username: string}>()
     return (
-        <Style.Root>
+        <Style.Root style={ props.style || {}}>
             <Style.Container>
                 <Style.Header>
                     <Style.Title to={`/user/${username}/repos/${props.name}`}>
@@ -28,15 +29,16 @@ export const RepoCard: FC<RepoCardProps>  = (props) => {
                     </Style.Visibility>
                 </Style.Header>
                 <Style.Description>
-                    {props.description}
+                    {props.description.length > 80 ? props.description.slice(0,80) + "..." : props.description}
                 </Style.Description>
                 <Style.TagsContainer>
-                    {props.tags.map((tag) => (
+                    { (props.tags.length > 8 ? props.tags.slice(0,8) : props.tags).map((tag) => (
                         <Style.Tag key={tag}>{tag}</Style.Tag>
                     ))}
                 </Style.TagsContainer>
                 <Style.Footer>
-                    {props.language}
+                    <Style.UpdateAt>{timeString(props.updateAt)}</Style.UpdateAt>
+                    <Style.Language>{props.language}</Style.Language>
                 </Style.Footer>
             </Style.Container>
             <Style.Aside>

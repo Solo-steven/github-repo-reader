@@ -6,6 +6,8 @@ export const Root = styled.div`
     justify-content: center;
     color: ${props => props.theme.palette.white};
     max-width: 800px;
+    width: 100%;
+    height: 100%;
     border-bottom: 1px solid ${props => props.theme.palette.border};
     padding: 28px 6px;
 `;
@@ -26,6 +28,7 @@ export const Title = styled(Link)`
     border: none ;
     color: ${props => props.theme.palette.text.primary};
     font-size: 20px;
+    line-height: 20px;
     font-weight: 600;
     cursor: pointer;
     &:hover {
@@ -75,6 +78,16 @@ export const Footer = styled.div`
     color: ${props => props.theme.palette.text.secondary};
     font-size: 12px;
     margin-top: 8px;
+    display: flex;
+`;
+
+export const UpdateAt = styled.p`
+     color: ${props => props.theme.palette.text.secondary};
+     margin-right: 24px;
+`;
+
+export const Language = styled.p`
+     color: ${props => props.theme.palette.text.secondary};
 `;
 
 export const Aside = styled.div`

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import * as Style from "./style";
 import { SiGithub } from "react-icons/si";
 
@@ -14,4 +14,4 @@ export const Header: FC = () => {
     )
 }
 
-export default Header;
+export default memo(Header);

@@ -30,6 +30,12 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
+`;
+
+export const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Title = styled.a`
@@ -43,6 +49,27 @@ export const Title = styled.a`
         text-decoration: underline;
     }
 `;
+export const LinkText = styled.a`
+    text-decoration: none;
+    color: #316ecab6;
+    font-size: 14px;
+    margin: 4px 0px;
+`;
+
+export const StarContainer = styled.div`
+    width: 100px;
+    background-color: #22272e;
+    padding: 7px 8px;
+    border-radius: 10px ;
+    color: #adbac7;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    & > *:nth-child(1) {
+        margin-right: 10px ;
+    }
+`;
+
 export const TagsContainer = styled.div`
     display: flex;
     align-items: center;
@@ -83,17 +110,4 @@ export const UpdateAt = styled.p`
 
 export const Language = styled.p`
      color: ${props => props.theme.palette.text.secondary};
-`;
-
-export const StarContainer = styled.div`
-    width: 100px;
-    background-color: #22272e;
-    padding: 7px 8px;
-    border-radius: 10px ;
-    color: #adbac7;
-    display: flex;
-    align-items: center;
-    & > *:nth-child(1) {
-        margin-right: 10px ;
-    }
 `;

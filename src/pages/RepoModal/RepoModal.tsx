@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as Style from "./style";
 import * as API from "api";
 import { MdStarBorder } from "react-icons/md";
+import { timeString, handleErrorCode } from "utils";
 
 interface RepoState {
     url: string;
@@ -16,57 +17,50 @@ interface RepoState {
     updateAt: string;
 }
 
-
-const timeString = (time: string | undefined) => {
-    if(!time) return;
-    const date = new Date(time);
-    let month: string = "";
-    switch(date.getMonth()+1) {
-        case 1: month = "Jan"; break;
-        case 2: month = "Feb"; break;
-        case 3: month = "Mar"; break;
-        case 4: month = "Apr"; break;
-        case 5: month = "May"; break;
-        case 6: month = "Jun"; break;
-        case 7: month = "Jul"; break;
-        case 8: month = "Aug"; break;
-        case 9: month = "Sep"; break;
-        case 10: month = "Oct"; break;
-        case 11: month = "Nov"; break;
-        case 12: month = "Dec"; break;
-    }
-    return `Update on ${date.getDate()} ${month} ${date.getFullYear()}`
-}
-
 const SingleRepo: FC = () => {
     const { username, repo } = useParams<{username: string, repo: string}>();
     const navigation = useNavigate();
     const [ repoInfo , setRepoInfo ] = useState<RepoState>();
 
     useEffect(() => {
-        const fetch = async (username: string, repo: string) => {
-            const data = await API.getUserRepoDetail(username, repo);
-            console.log(data)
-            setRepoInfo({
-                url: data.html_url,
-                name: data.full_name,
-                visibility: data.visibility,
-                language: data.language,
-                tags: data.topics,
-                description: data.description,
-                updateAt: data.updated_at,
-                starCount: data.stargazers_count,
-                watchCount: data.watchers_count,
-            });
+        const fetch  = async (username: string, repo: string) => {
+            try {
+                const data = await API.getUserRepoDetail(username, repo);
+                setRepoInfo({
+                    url: data.html_url,
+                    name: data.full_name,
+                    visibility: data.visibility,
+                    language: data.language,
+                    tags: data.topics,
+                    description: data.description,
+                    updateAt: data.updated_at,
+                    starCount: data.stargazers_count,
+                    watchCount: data.watchers_count,
+                });
+            }catch(error: any) {
+                navigation("/error", { replace: true, state: handleErrorCode(404 || error?.response?.status) })
+            }
         }
-        if(username && repo)
-           fetch(username, repo);
-    }, [username, repo])
+        if(username  && repo)
+            fetch(username, repo);
+    }, [repo, username, navigation]);
+
+    if(!repoInfo) {
+        return (
+           <Style.Background>
+               Loading ...
+           </Style.Background>
+        )
+    }
+
     return (
-        <Style.Background onClick={()=> { navigation(-1); }}>
+        <Style.Background onClick={()=> { navigation(`/user/${username}/repos`, { replace: true }) }}>
             <Style.Container onClick={(e)=> { e.stopPropagation();}}>
                 <Style.Header>
-                    <Style.Title href={repoInfo?.url}>{repoInfo?.name}</Style.Title>
+                    <Style.TextContainer>
+                        <Style.Title href={repoInfo?.url}>{repoInfo?.name}</Style.Title>
+                        <Style.LinkText href={repoInfo?.url}>{"Link to Github Page"}</Style.LinkText>
+                    </Style.TextContainer>
                     <Style.StarContainer>
                         <MdStarBorder/>
                         {"Star "}
@@ -78,7 +72,7 @@ const SingleRepo: FC = () => {
                 </Style.Description>
                 <Style.TagsContainer>
                     {repoInfo?.tags.map(tag => (
-                        <Style.Tag>{tag}</Style.Tag>
+                        <Style.Tag key={tag}>{tag}</Style.Tag>
                     ))}
                 </Style.TagsContainer>
                 <Style.Footer>
